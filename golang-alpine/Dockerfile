@@ -6,7 +6,7 @@ LABEL maintainer="fizzday <fizzday@yeah.net>" \
 
 # ############## env ##############
 ENV TZ Asia/Shanghai
-ENV GOROSE_GIN_VERSION master
+ENV GIT_BRANCH master
 ENV GO111MODULE on
 ENV GOPRODIR /var/www/
 
@@ -14,8 +14,9 @@ ENV GOPRODIR /var/www/
 #RUN export GOPROXY=https://goproxy.cn
 
 # ############## gorose-gin init & run for once ###########
+RUN export GO111MODULE=$GO111MODULE
 RUN cd $GOPRODIR
-RUN git clone https://github.com/gohouse/goroseGin.git .
+RUN git clone -b $GIT_BRANCH https://github.com/gohouse/goroseGin.git .
 RUN go mod tidy && go mod download
 
 # 打包一次, 方便初始化用
