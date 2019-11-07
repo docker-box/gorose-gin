@@ -11,7 +11,7 @@ ENV GO111MODULE on
 ENV GOPRODIR /var/www/
 
 # ############## proxy ##############
-RUN export GOPROXY=https://goproxy.cn
+#RUN export GOPROXY=https://goproxy.cn
 
 # ############## gorose-gin init & run for once ###########
 RUN cd $GOPRODIR
